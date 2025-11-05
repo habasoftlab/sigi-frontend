@@ -1,0 +1,41 @@
+# Nombre del workflow
+name: CI/CD Servispeed Frontend (React + Electron)
+
+# Triggers: Cuándo se debe ejecutar este workflow
+on:
+  # Ejecutar cuando se haga push a la rama 'develop'
+  push:
+    branches: [ develop ]
+  
+  # Ejecutar cuando se abra un Pull Request contra la rama 'develop'
+  pull_request:
+    branches: [ develop ]
+
+# Jobs: Las tareas a ejecutar
+jobs:
+  build-and-test:
+    # Sistema operativo donde se ejecutará (Ubuntu es el más común)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Obtener el código del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Configurar el entorno de Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Usa una versión LTS de Node.js
+          cache: 'npm' # Habilita el caché para 'npm install'
+
+      # Instalar todas las dependencias del proyecto
+      - name: Install dependencies
+        # 'npm ci' es más rápido y seguro para CI que 'npm install'
+        run: npm ci
+
+      # Construir la aplicación (para React)
+      - name: Build React App
+        run: npm run dev
+        # Asumiendo que 'npm run build' es para React. 
+        # Si tu build de Electron es diferente, ajústalo.
