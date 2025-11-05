@@ -1,42 +1,31 @@
-# Nombre del workflow
 name: CI Servispeed Frontend (Build & Test)
 
-# Triggers: Cuándo se debe ejecutar este workflow
 on:
-  # Ejecutar cuando se haga push a la rama 'develop'
   push:
     branches: [ develop ]
   
-  # Ejecutar cuando se abra un Pull Request contra la rama 'develop'
   pull_request:
     branches: [ develop ]
 
-# Jobs: Las tareas a ejecutar
 jobs:
   build-and-test:
-    # Sistema operativo donde se ejecutará
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Obtener el código del repositorio
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Configurar el entorno de Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      # 3. Instalar dependencias
       - name: Install dependencies
         run: npm ci
 
-      # 4. Ejecutar pruebas de Linting (Prueba funcional básica)
       - name: Run Lint
         run: npm run lint
 
-      # 5. Construir la aplicación (La prueba de compilación)
       - name: Build React/Next.js App
         run: npm run build
