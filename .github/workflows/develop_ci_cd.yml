@@ -3,7 +3,6 @@ name: CI Servispeed Frontend (Build & Test)
 on:
   push:
     branches: [ develop ]
-  
   pull_request:
     branches: [ develop ]
 
