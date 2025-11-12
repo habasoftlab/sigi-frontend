@@ -1,12 +1,12 @@
 # .github/workflows/ci.yml
-name: develop_ci_cd
+name: master_ci_cd
 
 # Triggers
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ develop ]
+    branches: [ master ]
 
 # Jobs
 jobs:
