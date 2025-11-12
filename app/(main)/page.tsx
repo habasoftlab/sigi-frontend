@@ -4,11 +4,8 @@ import { Button } from 'primereact/button';
 import { Chart } from 'primereact/chart';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
-import { Menu } from 'primereact/menu';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LayoutContext } from '../../layout/context/layoutcontext';
-import Link from 'next/link';
-import { Demo } from '@/types';
 import { ChartData, ChartOptions } from 'chart.js';
 
 const lineDataIng: ChartData = {
@@ -82,8 +79,6 @@ const products = [
 
 
 const Dashboard = () => {
-    const menu1 = useRef<Menu>(null);
-    const menu2 = useRef<Menu>(null);
     const [lineOptions, setLineOptions] = useState<ChartOptions>({});
     const { layoutConfig } = useContext(LayoutContext);
 
