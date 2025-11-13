@@ -77,7 +77,6 @@ const products = [
     },
 ];
 
-
 const Dashboard = () => {
     const [lineOptions, setLineOptions] = useState<ChartOptions>({});
     const { layoutConfig } = useContext(LayoutContext);
