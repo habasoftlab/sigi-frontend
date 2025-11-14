@@ -4,11 +4,8 @@ import { Button } from 'primereact/button';
 import { Chart } from 'primereact/chart';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
-import { Menu } from 'primereact/menu';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LayoutContext } from '../../layout/context/layoutcontext';
-import Link from 'next/link';
-import { Demo } from '@/types';
 import { ChartData, ChartOptions } from 'chart.js';
 
 const lineDataIng: ChartData = {
@@ -80,10 +77,7 @@ const products = [
     },
 ];
 
-
 const Dashboard = () => {
-    const menu1 = useRef<Menu>(null);
-    const menu2 = useRef<Menu>(null);
     const [lineOptions, setLineOptions] = useState<ChartOptions>({});
     const { layoutConfig } = useContext(LayoutContext);
 
@@ -204,7 +198,7 @@ const Dashboard = () => {
             <div className="col-12 xl:col-6">
                 <div className="card">
                     <h5>Cotizaciones mensuales</h5>
-                    <Chart type="line" data={lineDataIng} options={lineOptions} />
+                    <Chart type="bar" data={lineDataIng} options={lineOptions} />
                 </div>
             </div>
 
@@ -215,17 +209,15 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="col-48 lg:col-12 xl:col-12">
-                <div className="card mb-0 bg-red-600 text-center text-white rounded-2xl shadow-lg">
-                    <div>
-                        <i className="pi pi-exclamation-triangle text-white-500 text-2xl m-3" />
-                        <span className="text-1xl mb-2">3 Ordenes requieren atencion</span>
-                    </div>
+            <div className="col-36 lg:col-8 xl:col-12 flex justify-content-center">
+                <div className="card mb-0 bg-red-600 text-center text-white rounded-2xl shadow-lg inline-flex items-center justify-center w-auto px-4 py-2">
+                    <i className="pi pi-exclamation-triangle text-white text-2xl mr-2" />
+                    <span className="text-lg font-semibold">3 Órdenes requieren atención</span>
                 </div>
             </div>
 
             <div className="col-10 lg:col-6 xl:col-4">
-                <div className="card mb-0 bg-blue-400 text-center text-white py-6 rounded-2xl shadow-lg">
+                <div className="card mb-0 bg-blue-400 text-center text-white py-4 rounded-2xl shadow-lg">
                     <div>
                         <i className="pi pi-user text-white-500 text-4xl" />
                         <div className="font-bold text-4xl mb-2">50 Tazas</div>
@@ -235,7 +227,7 @@ const Dashboard = () => {
             </div>
 
             <div className="col-10 lg:col-6 xl:col-4">
-                <div className="card mb-0 bg-green-400 text-center text-white py-6 rounded-2xl shadow-lg">
+                <div className="card mb-0 bg-green-400 text-center text-white py-4 rounded-2xl shadow-lg">
                     <div>
                         <i className="pi pi-user text-white-500 text-4xl" />
                         <div className="font-bold text-4xl mb-2">8 Lonas</div>
@@ -245,7 +237,7 @@ const Dashboard = () => {
             </div>
 
             <div className="col-10 lg:col-6 xl:col-4">
-                <div className="card mb-0 bg-purple-400 text-center text-white py-6 rounded-2xl shadow-lg">
+                <div className="card mb-0 bg-purple-400 text-center text-white py-4 rounded-2xl shadow-lg">
                     <div>
                         <i className="pi pi-user text-white-500 text-4xl" />
                         <div className="font-bold text-4xl mb-2">150 Folletos</div>
@@ -253,17 +245,18 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            
             <div className="col-24 xl:col-12">
                 <div className="card">
                     <h5>Ordenes</h5>
                     <DataTable value={products} rows={5} paginator responsiveLayout="scroll">
-                        <Column field="id" header="Clave" sortable style={{ width: '35%' }} />
-                        <Column field="designer" header="Diseñador" sortable style={{ width: '35%' }} />
-                        <Column field="price" header="Precio" sortable style={{ width: '35%' }} body={(data) => formatCurrency(data.price)} />
-                        <Column field="client" header="Cliente" sortable style={{ width: '35%' }} />
+                        <Column field="id" header="Clave" sortable style={{ width: '30%' }} />
+                        <Column field="designer" header="Diseñador" sortable style={{ width: '30%' }} />
+                        <Column field="price" header="Precio" sortable style={{ width: '20%' }} body={(data) => formatCurrency(data.price)} />
+                        <Column field="client" header="Cliente" sortable style={{ width: '45%' }} />
                         <Column
                             header="Detalle"
-                            style={{ width: '35%' }}
+                            style={{ width: '50%' }}
                             body={() => (
                                 <>
                                     <Button icon="pi pi-search" text />
