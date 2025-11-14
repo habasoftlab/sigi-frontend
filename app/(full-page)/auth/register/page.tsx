@@ -7,7 +7,6 @@ import { Password } from 'primereact/password';
 import { LayoutContext } from '../../../../layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
-import { Checkbox } from 'primereact/checkbox';
 import { Dropdown } from 'primereact/dropdown';
 
 const RegisterPage = () => {
