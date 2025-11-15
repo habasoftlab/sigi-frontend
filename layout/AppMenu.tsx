@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-
 import React, { useContext } from 'react';
 import AppMenuitem from './AppMenuitem';
 import { LayoutContext } from './context/layoutcontext';
@@ -14,6 +13,8 @@ const AppMenu = () => {
             label: 'Inicio',
             items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' },
                 { label: 'Mostrador', icon: 'pi pi-fw pi-desktop', to: '/counter' },
+                { label: 'Lista de Cotizaciones', icon: 'pi pi-fw pi-list', to: '/listquote' },
+                { label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/pages/timeline'},
 ]
             
         },
@@ -41,14 +42,14 @@ const AppMenu = () => {
                     icon: 'pi pi-fw pi-user',
                     items: [
                         {
-                            label: 'Login',
+                            label: 'Inicio de sesion',
                             icon: 'pi pi-fw pi-sign-in',
                             to: '/auth/login'
                         },
                         {
-                            label: 'Access Denied',
-                            icon: 'pi pi-fw pi-lock',
-                            to: '/auth/access'
+                            label: 'Nuevo colaborador',
+                            icon: 'pi pi-fw pi-user-plus',
+                            to: '/auth/register'
                         }
                     ]
                 },
@@ -57,11 +58,6 @@ const AppMenu = () => {
                     icon: 'pi pi-fw pi-pencil',
                     to: '/pages/crud'
                 },
-                {
-                    label: 'Timeline',
-                    icon: 'pi pi-fw pi-calendar',
-                    to: '/pages/timeline'
-                }
             ]
         },
     ];
